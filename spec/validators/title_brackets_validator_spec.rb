@@ -1,7 +1,12 @@
 require "rails_helper"
+require "title_brackets_validator"
 
 describe TitleBracketsValidator do
   subject { Validatable.new(title: title) }
+
+  before(:all) do
+    TitleBracketsValidator.say_hello
+  end
 
   shared_examples "has valid title" do
     it "should be valid" do
@@ -78,6 +83,7 @@ end
 
 class Validatable
   include ActiveModel::Validations
+
   validates_with TitleBracketsValidator
   attr_accessor :title
 
