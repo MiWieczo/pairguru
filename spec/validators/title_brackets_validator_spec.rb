@@ -83,7 +83,6 @@ end
 
 class Validatable
   include ActiveModel::Validations
-
   validates_with TitleBracketsValidator
   attr_accessor :title
 
