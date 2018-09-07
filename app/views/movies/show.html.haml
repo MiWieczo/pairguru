@@ -4,14 +4,19 @@
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
 %h2 Comments
+%p
+  = @movie.comments.count
+  people left a comment about this movie
 - @movie.comments.each do |comment|
   .row.comment
     .col-md-2
       %p
-        Left by
+        Created by
         %strong= comment.user.name
       %p
         on
         = comment.created_at.strftime("%d/%m/%Y")
-    .col-md-10
+    .col-md-8
       %p= comment.text
+    .col-md-2
+      = link_to "Delete", movie_comment_path(@movie, comment), method: :delete
