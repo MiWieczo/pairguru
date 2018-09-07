@@ -12,11 +12,12 @@
     .col-md-2
       %p
         Created by
-        %strong= comment.user.name
+        %strong= comment.author.name
       %p
         on
         = comment.created_at.strftime("%d/%m/%Y")
     .col-md-8
       %p= comment.text
     .col-md-2
-      = link_to "Delete", movie_comment_path(@movie, comment), method: :delete
+      - if comment.author == current_user
+        = link_to "Delete", movie_comment_path(@movie, comment), method: :delete, class: 'btn btn-danger'
