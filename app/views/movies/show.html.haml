@@ -7,8 +7,11 @@
 - @movie.comments.each do |comment|
   .row.comment
     .col-md-2
-      %strong= comment.user.name
-      %br
-      = comment.created_at.strftime("%d/%m/%y")
+      %p
+        Left by
+        %strong= comment.user.name
+      %p
+        on
+        = comment.created_at.strftime("%d/%m/%Y")
     .col-md-10
       %p= comment.text
