@@ -3,3 +3,12 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+%h2 Comments
+- @movie.comments.each do |comment|
+  .row.comment
+    .col-md-2
+      %strong= comment.user.name
+      %br
+      = comment.created_at.strftime("%d/%m/%y")
+    .col-md-10
+      %p= comment.text
