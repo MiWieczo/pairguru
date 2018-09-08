@@ -24,6 +24,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def display_top_users
+    how_many = 10
+    since_when = 1.week.ago
+    @top_users = Comment.top_users(how_many, since_when)
+  end
+
+  private
+
   def permit_params
     params.permit(:movie_id, :comment)
   end
