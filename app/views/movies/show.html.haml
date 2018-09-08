@@ -3,6 +3,16 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+%h2 Add new comment
+
+= form_for :comment, url: movie_comments_path(@movie) do |f|
+  .row
+    .col-md-6
+      = f.text_area :text, class: "form-control", rows: "3", autofocus: true, placeholder: "Type in your comment"
+  .row.submit-comment
+    .col-md-12
+      = f.submit "Submit", class: "btn btn-success"
+
 %h2 Comments
 %p
   = @movie.comments.count
