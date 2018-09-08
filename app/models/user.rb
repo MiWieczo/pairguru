@@ -26,8 +26,15 @@ class User < ApplicationRecord
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
   has_many :comments, foreign_key: "author_id", class_name: "Comment"
 
-  def is_allowed_to_add_comment_to_movie(movie_id)
+  has_many :comments_this_week, -> { where("created_at > ?", 1.week.ago) },
+                                foreign_key: "author_id",
+                                class_name: "Comment"
+
+  def is_allowed_to_add_comment_to_movie?(movie_id)
     comments.where(movie_id: movie_id).empty?
   end
 
+  def comments_count
+    comments_this_week.count
+  end
 end
