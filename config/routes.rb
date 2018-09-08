@@ -16,5 +16,5 @@ Rails.application.routes.draw do
       get :export
     end
   end
-  get 'top_users', to: 'comments#display_top_users'
+  get 'top_users', to: 'users#display_top_users'
 end

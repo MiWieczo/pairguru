@@ -8,8 +8,8 @@
           %th Name
           %th Number of comments this week
       %tbody
-        - @top_users.each_with_index do |entry, i|
+        - @top_users.each_with_index do |user, i|
           %tr
             %td= i + 1
-            %td= entry[:name]
-            %td= entry[:number]
+            %td= user.name
+            %td= user.comments_this_week.count
