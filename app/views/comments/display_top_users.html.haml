@@ -11,5 +11,5 @@
         - @top_users.each_with_index do |entry, i|
           %tr
             %td= i + 1
-            %td= entry[0].name
-            %td= entry[1]
+            %td= entry[:name]
+            %td= entry[:number]
