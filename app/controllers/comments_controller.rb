@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :permit_params, only: :create
+
   def create
     @comment = Comment.new(text: params[:comment][:text], movie_id: params[:movie_id], author_id: current_user.id)
     if @comment.save
@@ -18,7 +20,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def comment_params
-    params.permit(:movie_id)
+  def permit_params
+    params.permit(:movie_id, :comment)
   end
 end
