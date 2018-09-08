@@ -1,2 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.comment {
+  margin: 20px;
+  padding: 20px;
+  &:hover {
+    background-color: lightgrey;
+  }
+}
+
+.submit-comment {
+  margin-top: 20px;
+}

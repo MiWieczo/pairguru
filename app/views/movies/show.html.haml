@@ -3,3 +3,30 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+  %h2 Add new comment
+  = form_for :comment, url: movie_comments_path(@movie) do |f|
+    .row
+      .col-md-6
+        = f.text_area :text, class: "form-control", rows: "3", autofocus: true, placeholder: "Type in your comment"
+    .row.submit-comment
+      .col-md-12
+        = f.submit "Submit", class: "btn btn-success"
+
+%h2 Comments
+%p
+  = @movie.comments.count
+  people left a comment about this movie
+- @movie.comments.each do |comment|
+  .row.comment
+    .col-md-2
+      %p
+        Created by
+        %strong= comment.author.name
+      %p
+        on
+        = comment.created_at.strftime("%d/%m/%Y")
+    .col-md-8
+      %p= comment.text
+    .col-md-2
+      - if comment.author == current_user
+        = link_to "Delete", movie_comment_path(@movie, comment), method: :delete, class: 'btn btn-danger'
