@@ -1,5 +1,4 @@
 require "rails_helper"
-require "title_brackets_validator"
 
 describe TitleBracketsValidator do
   subject { Validatable.new(title: title) }
