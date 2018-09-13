@@ -6,7 +6,7 @@ describe Comment, type: :model do
   
   context "Validations" do
 
-    it "is valid with valid attirbutes" do
+    it "is valid with valid attributes" do
       expect(subject).to be_valid
     end
 
@@ -22,11 +22,6 @@ describe Comment, type: :model do
 
     it "is invalid without a movie" do
       subject.movie = nil
-      expect(subject).not_to be_valid
-    end
-
-    it "is invalid without creation date" do
-      subject.created_at = nil
       expect(subject).not_to be_valid
     end
   end
