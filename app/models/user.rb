@@ -24,8 +24,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
-  validates :name, :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :name, :password, presence: true
 
   has_many :comments, foreign_key: "author_id", class_name: "Comment"
 

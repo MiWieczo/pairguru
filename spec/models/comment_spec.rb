@@ -8,24 +8,13 @@ describe Comment, type: :model do
       expect(subject).to be_valid
     end
 
-    it "is invalid without text" do
-      subject.text = nil
-      expect(subject).not_to be_valid
-    end
-
-    it "is invalid without an author" do
-      subject.author = nil
-      expect(subject).not_to be_valid
-    end
-
-    it "is invalid without a movie" do
-      subject.movie = nil
-      expect(subject).not_to be_valid
-    end
+    it { is_expected.to validate_presence_of :text }
+    it { is_expected.to validate_presence_of :author }
+    it { is_expected.to validate_presence_of :movie }
   end
 
   context "Associations" do
-    it { should belong_to(:author) }
-    it { should belong_to(:movie) }
+    it { is_expected.to belong_to(:author) }
+    it { is_expected.to belong_to(:movie) }
   end
 end

@@ -10,35 +10,15 @@ describe User, type: :model do
       expect(subject).to be_valid
     end
 
-    it "has a unique name" do
-      user = build(:user, name: subject.name)
-      expect(user).to_not be_valid
-    end
-
-    it "has a unique email" do
-      user = build(:user, email: subject.email)
-      expect(user).to_not be_valid
-    end
-
-    it "is not valid without a password" do
-      subject.password = nil
-      expect(subject).to_not be_valid
-    end
-
-    it "is not valid without a name" do
-      subject.name = nil
-      expect(subject).to_not be_valid
-    end
-
-    it "is not valid without an email" do
-      subject.email = nil
-      expect(subject).to_not be_valid
-    end
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :password }
+    it { is_expected.to validate_presence_of :email }
+    it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
   end
 
   describe "Associations" do
-    it { should have_many(:comments) }
-    it { should have_many(:comments_this_week) }
+    it { is_expected.to have_many(:comments) }
+    it { is_expected.to have_many(:comments_this_week) }
 
     it "should distinguish this week's comments from older ones" do
       this_week_comment = create_this_week_comment

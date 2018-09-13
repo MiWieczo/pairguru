@@ -1,4 +1,6 @@
 require "rails_helper"
 
-describe "Comments requiests", type: :request do
+describe "Comments requests", type: :request do
+
+
 end
