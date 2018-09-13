@@ -6,6 +6,37 @@ describe User, type: :model do
   let(:create_this_week_comment) { FactoryBot.create :comment, :this_week, author: subject }
   let(:create_older_comment) { FactoryBot.create :comment, :older, author: subject }
 
+  describe "Validations" do
+    it "is valid with valid attributes" do
+      expect(subject).to be_valid
+    end
+
+    it "has a unique name" do
+      user = build(:user, name: subject.name)
+      expect(user).to_not be_valid
+    end
+
+    it "has a unique email" do
+      user = build(:user, email: subject.email)
+      expect(user).to_not be_valid
+    end
+
+    it "is not valid without a password" do
+      subject.password = nil
+      expect(subject).to_not be_valid
+    end
+
+    it "is not valid without a name" do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end
+
+    it "is not valid without an email" do
+      subject.email = nil
+      expect(subject).to_not be_valid
+    end
+  end
+
   describe "Associations" do
 
     it { should have_many(:comments) }

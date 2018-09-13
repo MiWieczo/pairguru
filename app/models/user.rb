@@ -24,6 +24,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
+  validates :name, :email, presence: true, uniqueness: true
+  validates :password, presence: true
+
   has_many :comments, foreign_key: "author_id", class_name: "Comment"
 
   has_many :comments_this_week, -> { where("created_at > ?", 1.week.ago) },
