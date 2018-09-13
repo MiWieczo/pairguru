@@ -32,7 +32,8 @@ describe Comment, type: :model do
   end
 
   context "Associations" do
-
+    it { should belong_to(:author) }
+    it { should belong_to(:movie) }
   end
 
 end
