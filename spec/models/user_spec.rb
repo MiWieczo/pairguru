@@ -20,13 +20,13 @@ describe User, type: :model do
   end
 
   describe "#number_of_comments_this_week" do
-    it "should return the number of comments the user has created last week" do
+    it "returns the number of comments the user has created this week" do
       sample = rand(5..20)
       list = create_list(:comment, sample, :this_week, author: subject)
       # This is strange because sometimes
       # the comments in the list above
       # have created_at parameter equal to
-      # an earlier moment in time than 1.week.ago.
+      # an earlier moment in time than 1.week.ago which fails the spec.
 
       # You can look in factories/comment.rb, trait :this_week
       # to check whether I did something wrong or I found a bug in Faker.
