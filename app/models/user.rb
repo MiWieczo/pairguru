@@ -34,7 +34,7 @@ class User < ApplicationRecord
     comments.where(movie_id: movie_id).empty?
   end
 
-  def comments_count
+  def number_of_comments_this_week
     comments_this_week.count
   end
 end
