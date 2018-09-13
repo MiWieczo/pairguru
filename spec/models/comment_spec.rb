@@ -1,13 +1,9 @@
 require 'rails_helper'
 
 describe Comment, type: :model do
-  let(:author) { FactoryBot.create(:user) }
-  let(:movie) { FactoryBot.create :movie }
+
+  subject { FactoryBot.create :comment } 
   
-
-
-  subject { Comment.create text: "super film", movie_id: movie.id, author_id: author.id }
-
   describe "Validations" do
 
     it "is valid with valid attirbutes" do
