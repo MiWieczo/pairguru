@@ -4,7 +4,7 @@ describe Comment, type: :model do
 
   subject { FactoryBot.create :comment } 
   
-  describe "Validations" do
+  context "Validations" do
 
     it "is valid with valid attirbutes" do
       expect(subject).to be_valid
@@ -31,7 +31,7 @@ describe Comment, type: :model do
     end
   end
 
-  describe "Associations" do
+  context "Associations" do
 
   end
 
