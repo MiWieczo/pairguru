@@ -7,7 +7,7 @@ FactoryBot.define do
   end
 
   trait :this_week do
-    created_at { Faker::Time.between(1.week.ago, Time.now) }
+    created_at { Faker::Time.between(1.week.ago, Time.current) }
   end
 
   trait :older do

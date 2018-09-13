@@ -1,11 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Comment, type: :model do
+  subject { FactoryBot.create :comment }
 
-  subject { FactoryBot.create :comment } 
-  
   context "Validations" do
-
     it "is valid with valid attributes" do
       expect(subject).to be_valid
     end
@@ -30,5 +28,4 @@ describe Comment, type: :model do
     it { should belong_to(:author) }
     it { should belong_to(:movie) }
   end
-
 end

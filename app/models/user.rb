@@ -30,8 +30,8 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: "author_id", class_name: "Comment"
 
   has_many :comments_this_week, -> { where("created_at > ?", 1.week.ago) },
-                                foreign_key: "author_id",
-                                class_name: "Comment"
+           foreign_key: "author_id",
+           class_name: "Comment"
 
   def is_allowed_to_add_comment_to_movie?(movie_id)
     comments.where(movie_id: movie_id).empty?
