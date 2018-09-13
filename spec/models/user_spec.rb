@@ -6,13 +6,12 @@ describe User, type: :model do
   let(:create_this_week_comment) { FactoryBot.create :comment, :this_week, author: subject }
   let(:create_older_comment) { FactoryBot.create :comment, :older, author: subject }
   
-  context "Associations" do
+  describe "Associations" do
     
     it { should have_many(:comments) }
     it { should have_many(:comments_this_week) }
         
     it "should distinguish this week's comments from the older ones" do
-      # binding.pry
       this_week_comment = create_this_week_comment
       older_comment = create_older_comment
       expect(subject.comments_this_week.last).to eq(this_week_comment)
@@ -20,7 +19,11 @@ describe User, type: :model do
     end
   end
   
-  context "Phone number" do
+  describe "#comments_count" do
+
+  end
+  
+  describe "Phone number" do
     it { is_expected.to allow_value("+48 999 888 777").for(:phone_number) }
     it { is_expected.to allow_value("48 999-888-777").for(:phone_number) }
     it { is_expected.to allow_value("48 999-888-777").for(:phone_number) }
