@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe Comment, type: :model do
-  let(:author) { User.create name: "Miko", email: "miko@gmail.com", encrypted_password: "123456" }
-  let(:movie) { Movie.create title: "Star Wars", description: "jedi knights etc." }
-  subject { Comment.new text: "super film", movie: movie, author: author}
+  let(:author) { FactoryBot.create :user }
+  let(:movie) { FactoryBot.create :movie }
+
+  subject { Comment.create text: "super film", movie_id: movie.id, author_id: author.id }
 
   describe "Validations" do
 
