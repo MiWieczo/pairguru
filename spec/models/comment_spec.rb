@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 describe Comment, type: :model do
-  let(:author) { FactoryBot.create :user }
+  let(:author) { FactoryBot.create(:user) }
   let(:movie) { FactoryBot.create :movie }
+  
+
 
   subject { Comment.create text: "super film", movie_id: movie.id, author_id: author.id }
 
