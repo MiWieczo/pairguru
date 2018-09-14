@@ -9,7 +9,7 @@
           %th Number of comments this week
       %tbody
         - @top_users.each_with_index do |user, i|
-          %tr
+          %tr.top-users-row
             %td= i + 1
             %td= user.name
             %td= user.comments_this_week.count
