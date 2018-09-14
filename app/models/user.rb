@@ -33,7 +33,7 @@ class User < ApplicationRecord
            foreign_key: "author_id",
            class_name: "Comment"
 
-  def is_allowed_to_add_comment_to_movie?(movie_id)
+  def allowed_to_add_comment_to_movie?(movie_id)
     comments.where(movie_id: movie_id).empty?
   end
 
