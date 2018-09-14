@@ -9,11 +9,11 @@ class TitleBracketsValidator < ActiveModel::Validator
   end
 
   def brackets_balanced?(text)
-    pairs = {'(' => ')', '[' => ']', '{' => '}'}
+    pairs = { "(" => ")", "[" => "]", "{" => "}" }
     left = pairs.keys
     right = pairs.values
     stack = []
-    text.split('').each do |char|
+    text.split("").each do |char|
       if left.include?(char)
         stack << char
       elsif right.include?(char)
@@ -24,7 +24,7 @@ class TitleBracketsValidator < ActiveModel::Validator
   end
 
   def brackets_not_empty?(text)
-    brackets = %w[ () [] {} ]
+    brackets = %w[() [] {}]
     brackets.none? { |b| text.include?(b) }
   end
 end
